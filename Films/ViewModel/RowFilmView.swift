@@ -16,6 +16,8 @@ struct RowFilmView: View {
             .frame(width: 165, height: 165)
             .cornerRadius(12)
             .shadow(color: .black, radius: 2)
+            .accessibility(label: Text("\(score.title)"))
+            .accessibility(identifier: "Score Title")
             .overlay(
                 VStack{
                     if score.tracks != nil {

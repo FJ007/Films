@@ -19,6 +19,7 @@ struct Score: Identifiable, Codable {
 
 final class ScoresData: ObservableObject {
     @Published var scores: [Score] = []
+    var composers: [String] = []
     
     static let scoreTest = Score(id: 71,
                           title: "Doctor Strange",
@@ -35,8 +36,26 @@ final class ScoresData: ObservableObject {
         do {
             let data = try Data(contentsOf: path)
             scores = try JSONDecoder().decode([Score].self, from: data)
+            composers = Array(Set(scores.map { $0.composer } ))
+            composers.append("None")
         } catch {
             print("ERROR: nose ha podido cargar el fichero debido a \(error)")
         }
+    }
+    
+    func delete(score: Score) {
+        scores.removeAll() { s in
+            s.id == score.id
+        }
+    }
+    
+    func filteredComposer(filter: String) -> [Score] {
+        scores.filter({
+            if filter.isEmpty || filter == "None" {
+                return true
+            } else {
+                return filter == $0.composer
+            }
+        })
     }
 }
