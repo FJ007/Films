@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D9EB0E97254C3DD000C67E20 /* FilmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EB0E96254C3DD000C67E20 /* FilmsApp.swift */; };
-		D9EB0E99254C3DD000C67E20 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EB0E98254C3DD000C67E20 /* ContentView.swift */; };
 		D9EB0E9B254C3DD100C67E20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB0E9A254C3DD100C67E20 /* Assets.xcassets */; };
 		D9EB0E9E254C3DD100C67E20 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EB0E9D254C3DD100C67E20 /* Preview Assets.xcassets */; };
 		D9EB0EA9254C3DD100C67E20 /* FilmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EB0EA8254C3DD100C67E20 /* FilmsTests.swift */; };
@@ -39,7 +38,6 @@
 /* Begin PBXFileReference section */
 		D9EB0E93254C3DD000C67E20 /* Films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Films.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EB0E96254C3DD000C67E20 /* FilmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsApp.swift; sourceTree = "<group>"; };
-		D9EB0E98254C3DD000C67E20 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D9EB0E9A254C3DD100C67E20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9EB0E9D254C3DD100C67E20 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D9EB0E9F254C3DD100C67E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,15 +101,14 @@
 		D9EB0E95254C3DD000C67E20 /* Films */ = {
 			isa = PBXGroup;
 			children = (
+				D9EB0E9C254C3DD100C67E20 /* Preview Content */,
 				D9EB0E9A254C3DD100C67E20 /* Assets.xcassets */,
+				D9EB0EC4254C3F1900C67E20 /* scoresdata.json */,
 				D9EB0E96254C3DD000C67E20 /* FilmsApp.swift */,
 				D9EB0EC9254C3F4E00C67E20 /* Model */,
 				D9EB0ED9254C478E00C67E20 /* ViewModel */,
 				D9EB0ECA254C3F5700C67E20 /* Views */,
-				D9EB0E98254C3DD000C67E20 /* ContentView.swift */,
 				D9EB0E9F254C3DD100C67E20 /* Info.plist */,
-				D9EB0EC4254C3F1900C67E20 /* scoresdata.json */,
-				D9EB0E9C254C3DD100C67E20 /* Preview Content */,
 			);
 			path = Films;
 			sourceTree = "<group>";
@@ -298,7 +295,6 @@
 			files = (
 				D9EB0EDB254C47AC00C67E20 /* RowFilmView.swift in Sources */,
 				D9EB0ED5254C444800C67E20 /* FilmsView.swift in Sources */,
-				D9EB0E99254C3DD000C67E20 /* ContentView.swift in Sources */,
 				D9EB0ECC254C3F8800C67E20 /* Score.swift in Sources */,
 				D9EB0E97254C3DD000C67E20 /* FilmsApp.swift in Sources */,
 			);

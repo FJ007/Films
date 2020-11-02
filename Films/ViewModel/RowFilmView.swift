@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RowFilmView: View {
-    let score: Score
+    let score:Score
+    
     var body: some View {
         Image("\(score.cover)")
             .resizable()
@@ -17,7 +18,7 @@ struct RowFilmView: View {
             .cornerRadius(12)
             .shadow(color: .black, radius: 2)
             .accessibility(label: Text("\(score.title)"))
-            .accessibility(identifier: "Score Title")
+            .accessibility(identifier: "cover")
             .overlay(
                 VStack{
                     if score.tracks != nil {
@@ -37,7 +38,7 @@ struct RowFilmView: View {
                     }
                     Spacer()
                     Rectangle()
-                        .frame(width: .infinity, height: 50)
+                        .frame(height: 50)
                         .foregroundColor(.black)
                         .opacity(0.8)
                         .cornerRadius(12)
