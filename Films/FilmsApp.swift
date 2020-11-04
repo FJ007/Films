@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FilmsApp: App {
+    @StateObject var scoresData = ScoresData()
+    
+    
     var body: some Scene {
         WindowGroup {
-            FilmsView()
+            FilmsMainView()
+                .environmentObject(scoresData)
         }
     }
 }

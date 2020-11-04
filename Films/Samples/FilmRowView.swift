@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RowFilmView: View {
+struct FilmRowView: View {
     let score:Score
     
     var body: some View {
@@ -58,6 +58,10 @@ struct RowFilmView: View {
 
 struct RowFilm_Previews: PreviewProvider {
     static var previews: some View {
-        RowFilmView(score: ScoresData.scoreTest)
+        FilmRowView(score: ScoresData.scoreTest)
+            .previewLayout(.fixed(width: 200, height: 200))
+        FilmRowView(score: ScoresData.scoreTest)
+            .preferredColorScheme(.dark)
+            .previewLayout(.fixed(width: 200, height: 200))
     }
 }
