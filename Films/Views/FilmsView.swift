@@ -1,129 +1,107 @@
 //
-//  FilmsView.swift
+//  FilmsMainView.swift
 //  Films
 //
-//  Created by Javier Fernández on 30/10/2020.
+//  Created by Javier Fernández on 04/11/2020.
 //
 
 import SwiftUI
 
 struct FilmsView: View {
     @EnvironmentObject var scoresData:ScoresData
-    let columns:[GridItem] = Array(repeating: .init(.flexible()), count: 2)
-    
     @State private var filterComposer = ""
-    @State private var isFilmDelete:Bool = false
-    @State private var selectScore:Score?
-    @State private var showTracks:Bool = false
+    @State private var showListFilmView = true
     
     var body: some View {
-        ZStack {
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(scoresData.filteredComposer(filter: filterComposer)) { score in
-                        FilmRowView(score: score)
-                            .contextMenu {
-                                Button(action: {
-                                    isFilmDelete.toggle()
-                                }, label: {
-                                    Text("Delete")
-                                    Image(systemName: "trash")
-                                })
-                            }
-                            .onTapGesture(count: 1) {
-                                if score.tracks != nil {
-                                    selectScore = score
-                                    withAnimation {
-                                        showTracks.toggle()
-                                    }
-                                }
-                            }
-                            .alert(isPresented: $isFilmDelete, content: {
-                                Alert(title: Text("Notification"),
-                                      message: Text("Are you sure delete \(score.title)?"),
-                                      primaryButton: .cancel(),
-                                      secondaryButton: .destructive(Text("Delete"),
-                                      action: {
-                                          scoresData.delete(score: score)
-                                }))
-                            })
-                            .animation(.default)
-                    }
+        VStack{
+            if showListFilmView {
+                NavigationView {
+                    FilmsListView(filterComposer: $filterComposer)
+                        .modifier(FilmStyle(showListFilmView: $showListFilmView,
+                                                filterComposer: $filterComposer,
+                                                scoresData: scoresData))
                 }
-                .padding()
-            }
-            .blur(radius: showTracks ? 3 : 0)
-            if showTracks {
-                TracksView(selectScore: $selectScore, showTracks: $showTracks)
-                    .animation(.default)
+            } else {
+                NavigationView {
+                    FilmsGridView(filterComposer: $filterComposer)
+                        .modifier(FilmStyle(showListFilmView: $showListFilmView,
+                                                filterComposer: $filterComposer,
+                                                scoresData: scoresData))
+                }
             }
         }
     }
 }
 
-struct FilmsView_Previews: PreviewProvider {
+struct FilmsMainView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            FilmsView()
-                .environmentObject(ScoresData())
-                .navigationTitle("Scores")
-        }
+        FilmsView()
+            .environmentObject(ScoresData())
     }
 }
-
-// MARK: - SubViews
-
-/// Listado de canciones por película
-struct TracksView: View {
-    @Binding var selectScore:Score?
-    @Binding var showTracks:Bool
+//MARK: - Subviews
+/// Menú de filtrado por compositores
+struct MenuFilterComposers: View {
+    let composers:[String]
+    @Binding var filterComposer:String
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 24)
-            .opacity(0.8)
-            .shadow(radius: 10)
-            .edgesIgnoringSafeArea(.bottom)
-            .overlay(
-                VStack {
+        Menu {
+            ForEach(composers, id:\.self) { composer in
+                Button(action: {
+                    withAnimation {
+                        filterComposer = composer
+                    }
+                }, label: {
+                    Text("\(composer)")
+                    Image("\(composer)")
+                    //.resizable()
+                    //.scaledToFit()
+                    //.clipShape(Circle())
+                })
+            }
+        } label: {
+            Image(systemName: filterComposer.isEmpty || filterComposer == "None" ?
+                    "line.horizontal.3.decrease.circle" :
+                    "line.horizontal.3.decrease.circle.fill")
+                .font(.title2)
+                .foregroundColor(.black)
+        }
+    }
+}
+
+//MARK: - Styles
+
+struct FilmStyle:ViewModifier {
+    @Binding var showListFilmView:Bool
+    @Binding var filterComposer:String
+    let scoresData:ScoresData
+    
+    func body(content: Content) -> some View {
+        content
+            .navigationTitle("Scores")
+            .navigationBarItems(
+                leading:
+                    EditButton()
+                    .disabled(showListFilmView ? false : true)
+                    .opacity(showListFilmView ? 1 : 0.3)
+                    .foregroundColor(.black)
+                ,trailing:
                     HStack {
-                        VStack(alignment: .leading) {
-                            Text("Tracks")
-                                .font(.largeTitle)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.white)
-                            Text("\(selectScore?.title ?? "")")
-                                .font(.footnote)
-                                .bold()
-                                .foregroundColor(.white)
-                            
-                        }.padding()
-                        Spacer()
+                        MenuFilterComposers(composers: scoresData.composers,
+                                            filterComposer: $filterComposer).padding()
                         Button(action: {
-                            withAnimation(.default) {
-                                showTracks.toggle()
+                            withAnimation {
+                                showListFilmView.toggle()
                             }
                         }, label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                                .opacity(0.9)
+                            Image(systemName: showListFilmView ? "list.bullet.rectangle" : "list.dash")
+                                .font(.title2)
+                                .foregroundColor(.black)
                         })
-                        .padding()
                     }
-                    ScrollView {
-                        if let tracks = selectScore?.tracks {
-                            ForEach(tracks, id:\.self) { track in
-                                Text("\(track)")
-                                    .font(.body)
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .multilineTextAlignment(.center)
-                                    .padding(8)
-                            }
-                        }
-                    }
-                }
             )
-            .offset(y: UIScreen.main.bounds.size.height * 0.15)
     }
+    
 }
+

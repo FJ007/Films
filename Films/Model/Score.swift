@@ -21,6 +21,15 @@ final class ScoresData: ObservableObject {
     @Published var scores:[Score] = []
     var composers:[String] = []
     
+    // Sections by composers
+    var groupComposers:[[Score]] {
+        Dictionary(grouping: scores) { (score:Score) in
+            score.composer
+        }
+        .values
+        .sorted(by: { ($0.first?.composer ?? "") < ($1.first?.composer ?? "") })
+    }
+    
     init() {
         guard let path = Bundle.main.url(forResource: "scoresdata", withExtension: "json") else {
             return

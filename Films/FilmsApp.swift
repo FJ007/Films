@@ -11,10 +11,9 @@ import SwiftUI
 struct FilmsApp: App {
     @StateObject var scoresData = ScoresData()
     
-    
     var body: some Scene {
         WindowGroup {
-            FilmsMainView()
+            FilmsView()
                 .environmentObject(scoresData)
         }
     }
@@ -23,5 +22,6 @@ struct FilmsApp: App {
 struct FilmsApp_Previews: PreviewProvider {
     static var previews: some View {
         FilmsView()
+            .environmentObject(ScoresData())
     }
 }
