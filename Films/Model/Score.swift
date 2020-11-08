@@ -62,7 +62,7 @@ final class ScoresData: ObservableObject {
     
     
     // MARK: - Test 
-    static var scoreTest = Score(id: 1000,
+    static let scoreTest = Score(id: 1000,
                                  title: "Doctor Strange",
                                  composer: "Michael Giacchino",
                                  year: 2016,
@@ -70,7 +70,7 @@ final class ScoresData: ObservableObject {
                                  cover: "DoctorStrange",
                                  tracks: nil)
     
-    static var scoreAndTracksTest = Score(id: 2000,
+    static let scoreAndTracksTest = Score(id: 2000,
                                           title: "Home Alone",
                                           composer: "John Williams",
                                           year: 1990,
