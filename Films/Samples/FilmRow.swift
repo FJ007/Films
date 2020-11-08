@@ -23,7 +23,7 @@ struct FilmRow: View {
                 .overlay(
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
-                            .opacity(0.5)
+                            .opacity(0.2)
                             .foregroundColor(.black)
                             .blur(radius: 1)
                         VStack{

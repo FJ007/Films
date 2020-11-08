@@ -22,7 +22,7 @@ struct FilmsGridView: View {
                 ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach(scoresData.filteredComposer(filter: filterComposer)) { score in
-                            FilmRowView(score: score)
+                            FilmRow(score: score)
                                 .contextMenu {
                                     Button(action: {
                                         isFilmDelete.toggle()

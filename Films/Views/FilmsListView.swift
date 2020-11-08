@@ -15,7 +15,13 @@ struct FilmsListView: View {
         VStack {
             List {
                 ForEach(scoresData.filteredComposer(filter: filterComposer)) { score in
-                    FilmListRowView(score: score)
+                    NavigationLink(
+                        destination:
+                            EditFormView(score: score)
+                        ,label: {
+                            FilmListRow(score: score)
+                        }
+                    )
                 }
                 .onDelete(perform: { indexSet in
                     if let index = indexSet.first {

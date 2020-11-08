@@ -17,14 +17,14 @@ struct FilmsView: View {
             if showListFilmView {
                 NavigationView {
                     FilmsListView(filterComposer: $filterComposer)
-                        .modifier(FilmStyle(showListFilmView: $showListFilmView,
+                        .modifier(NavigationBarStyle(showListFilmView: $showListFilmView,
                                                 filterComposer: $filterComposer,
                                                 scoresData: scoresData))
                 }
             } else {
                 NavigationView {
                     FilmsGridView(filterComposer: $filterComposer)
-                        .modifier(FilmStyle(showListFilmView: $showListFilmView,
+                        .modifier(NavigationBarStyle(showListFilmView: $showListFilmView,
                                                 filterComposer: $filterComposer,
                                                 scoresData: scoresData))
                 }
@@ -72,7 +72,7 @@ struct MenuFilterComposers: View {
 
 //MARK: - Styles
 
-struct FilmStyle:ViewModifier {
+struct NavigationBarStyle:ViewModifier {
     @Binding var showListFilmView:Bool
     @Binding var filterComposer:String
     let scoresData:ScoresData
@@ -91,9 +91,7 @@ struct FilmStyle:ViewModifier {
                         MenuFilterComposers(composers: scoresData.composers,
                                             filterComposer: $filterComposer).padding()
                         Button(action: {
-                            withAnimation {
-                                showListFilmView.toggle()
-                            }
+                            showListFilmView.toggle()
                         }, label: {
                             Image(systemName: showListFilmView ? "list.bullet.rectangle" : "list.dash")
                                 .font(.title2)

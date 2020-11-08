@@ -7,23 +7,17 @@
 
 import SwiftUI
 
-struct FilmListRowView: View {
+struct FilmListRow: View {
     let score:Score
     
     var body: some View {
         HStack {
-            Image(score.cover)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 115, height: 115)
-                .cornerRadius(8)
-                .padding(.horizontal, 10)
             VStack(alignment: .leading) {
                 Text("\(score.title)")
                     .font(.title3)
                     .bold()
                     .foregroundColor(.primary)
-                Text("\(Int(score.year)) - \(score.length)\"")
+                Text("\(String(score.year)) - \(score.length)\"")
                     .font(.callout)
                     .fontWeight(.medium)
                     .foregroundColor(.secondary)
@@ -52,6 +46,13 @@ struct FilmListRowView: View {
                         .accentColor(.gray)
                 }
             }
+            Spacer()
+            Image(score.cover)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 115, height: 115)
+                .cornerRadius(8)
+                .padding(.horizontal, 10)
         }
         .animation(.default)
         .padding(8)
@@ -61,15 +62,15 @@ struct FilmListRowView: View {
 
 struct FilmListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        FilmListRowView(score: ScoresData.scoreTest)
+        FilmListRow(score: ScoresData.scoreTest)
             .previewLayout(.fixed(width: 325, height: 150))
-        FilmListRowView(score: ScoresData.scoreTest)
+        FilmListRow(score: ScoresData.scoreTest)
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 325, height: 150))
-        FilmListRowView(score: ScoresData.scoreAndTracksTest)
+        FilmListRow(score: ScoresData.scoreAndTracksTest)
             .preferredColorScheme(.light)
             .previewLayout(.fixed(width: 325, height: 150))
-        FilmListRowView(score: ScoresData.scoreAndTracksTest)
+        FilmListRow(score: ScoresData.scoreAndTracksTest)
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 325, height: 150))
     }
