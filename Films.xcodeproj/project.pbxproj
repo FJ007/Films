@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D97559D42559795500FDD31C /* PHPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97559D32559795500FDD31C /* PHPickerView.swift */; };
 		D97733BD25572FD90042A9A4 /* EditFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97733BC25572FD90042A9A4 /* EditFormView.swift */; };
 		D9ACAD56255309790066A7C0 /* FilmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACAD55255309790066A7C0 /* FilmsView.swift */; };
 		D9B769A32552C345007E5A5D /* FilmsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B769A22552C345007E5A5D /* FilmsListView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D97559D32559795500FDD31C /* PHPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerView.swift; sourceTree = "<group>"; };
 		D97733BC25572FD90042A9A4 /* EditFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFormView.swift; sourceTree = "<group>"; };
 		D9ACAD55255309790066A7C0 /* FilmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsView.swift; sourceTree = "<group>"; };
 		D9B769A22552C345007E5A5D /* FilmsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsListView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D97559D825597E3900FDD31C /* UIKitView */ = {
+			isa = PBXGroup;
+			children = (
+				D97559D32559795500FDD31C /* PHPickerView.swift */,
+			);
+			path = UIKitView;
+			sourceTree = "<group>";
+		};
 		D9EB0E8A254C3DD000C67E20 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +123,7 @@
 				D9EB0E9A254C3DD100C67E20 /* Assets.xcassets */,
 				D9EB0EC4254C3F1900C67E20 /* scoresdata.json */,
 				D9EB0E96254C3DD000C67E20 /* FilmsApp.swift */,
+				D97559D825597E3900FDD31C /* UIKitView */,
 				D9EB0EC9254C3F4E00C67E20 /* Model */,
 				D9EB0ED9254C478E00C67E20 /* Samples */,
 				D9EB0ECA254C3F5700C67E20 /* Views */,
@@ -307,6 +318,7 @@
 			files = (
 				D9ACAD56255309790066A7C0 /* FilmsView.swift in Sources */,
 				D9EB0EDB254C47AC00C67E20 /* FilmRow.swift in Sources */,
+				D97559D42559795500FDD31C /* PHPickerView.swift in Sources */,
 				D97733BD25572FD90042A9A4 /* EditFormView.swift in Sources */,
 				D9B769A32552C345007E5A5D /* FilmsListView.swift in Sources */,
 				D9EB0ED5254C444800C67E20 /* FilmsGridView.swift in Sources */,
